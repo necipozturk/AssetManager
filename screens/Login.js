@@ -88,7 +88,7 @@ export default class Login extends React.Component {
         >
           <View
             style={{
-              marginTop: 200,
+              marginTop: 115,
               justifyContent: "center",
               alignItems: "center",
               margin: 25,
