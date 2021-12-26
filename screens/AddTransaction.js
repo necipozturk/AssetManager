@@ -148,6 +148,32 @@ export default function AddTransactionScreen({ navigation, route }) {
           onChangeText={setAmount}
           keyboardType="decimal-pad"
         />
+        <View
+          style={{ borderBottomWidth: 1, borderColor: "#ccc", borderRadius: 3 }}
+        >
+          <Picker
+            selectedValue={category}
+            style={{ height: 50, width: "100%" }}
+            onValueChange={(itemValue) => setCategory(itemValue)}
+          >
+            <Picker.Item label="Kategori Seçiniz..." value="cat" />
+            <Picker.Item label="Aidat" value="Aidat" />
+            <Picker.Item label="Alacak" value="Alacak" />
+            <Picker.Item label="Birikim" value="Birikim" />
+            <Picker.Item label="Borç" value="Borç" />
+            <Picker.Item label="Diğer" value="Diğer" />
+            <Picker.Item label="Ek Ders" value="Ek Ders" />
+            <Picker.Item label="Elektrik" value="Elektrik" />
+            <Picker.Item label="Fatura" value="Fatura" />
+            <Picker.Item label="İnternet" value="İnternet" />
+            <Picker.Item label="Su Faturası" value="Su Faturası" />
+            <Picker.Item label="Kira" value="Kira" />
+            <Picker.Item label="Kredi Kartı" value="Kredi Kartı" />
+            <Picker.Item label="Maaş" value="Maaş" />
+            <Picker.Item label="Mesai" value="Mesai" />
+            <Picker.Item label="Telefon" value="Telefon" />
+          </Picker>
+        </View>
 
         <View
           style={{
@@ -190,7 +216,7 @@ export default function AddTransactionScreen({ navigation, route }) {
 async function schedulePushNotification(isEnabled1) {
   await Notifications.scheduleNotificationAsync({
     content: {
-      title: "AssetManager 📣",
+      title: "Cüzdanım 📣",
       body: isEnabled1
         ? "Hesabınıza para girişi oldu!"
         : "Hesabınızdan para çıkışı oldu!",
@@ -204,7 +230,7 @@ async function sendPushNotification(expoPushToken, isEnabled1) {
   const message = {
     to: expoPushToken,
     sound: "default",
-    title: "AssetManager 📣",
+    title: "Cüzdanım 📣",
     body: isEnabled1
       ? "Hesabınıza para girişi oldu!"
       : "Hesabınızdan para çıkışı oldu!",
@@ -237,7 +263,7 @@ async function registerForPushNotificationsAsync() {
     }
 
     if (finalStatus !== "granted") {
-      alert("Push bildirimi için push belirteci alınamadı!");
+      alert("Takvimi çalışırsa seçiniz çalışmıyor ise bugün olarak işlenecektir.");
       return;
     }
 
